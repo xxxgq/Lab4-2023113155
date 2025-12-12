@@ -3,11 +3,11 @@ name: tests
 on: push
 
 jobs:
-  test:
+  run_test:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
+    - name: Checkout the repository
       uses: actions/checkout@v4
       
     - name: Set up JDK 17
@@ -16,13 +16,13 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         
-    - name: Cache Maven dependencies
+    - name: Cache Maven packages
       uses: actions/cache@v4
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
-          ${{ runner.os }}-maven-
+          ${{ runner.os }}-m2-
           
-    - name: Build and test with Maven
+    - name: Run tests with Maven
       run: mvn clean test
