@@ -1,5 +1,5 @@
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  * 测试用例设计原则：
@@ -20,7 +20,8 @@ public class L2023113155_15_Test {
         Solution15 solution = new Solution15();
         
         // 相等情况测试
-        assertEquals(0, solution.compareVersion("1.01", "1.001"));
+        //修改断言使测试失败
+        assertEquals(1, solution.compareVersion("1.01", "1.001"));
         assertEquals(0, solution.compareVersion("1.0", "1.0.0"));
         assertEquals(0, solution.compareVersion("2.5.0", "2.5"));
         
